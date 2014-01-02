@@ -1,17 +1,14 @@
 define([
   'backbone',
-  'mocks',
   'collections/posts',
   'views/root',
   'views/posts/index',
   'views/posts/show'
-], function (Backbone, Mock, PostsCollection, RootView, IndexView, ShowPost) {
+], function (Backbone, PostsCollection, RootView, IndexView, ShowPost) {
   var collection;
 
   if (!collection) {
     collection = new PostsCollection();
-    Mock.start();
-    console.log("*** Mock Posts API ***");
   }
 
   return Backbone.Router.extend({
