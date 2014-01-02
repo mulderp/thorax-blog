@@ -19,6 +19,12 @@ app.get('/api/posts', function(req, res) {
    )
 })
 
+app.get('/', function(req, res) {
+ console.log("--> /");
+ res.sendfile(__dirname + '/dist/index.html');
+});
+
 app.listen(port, function() {
   console.log("Connect server listenting on port " + port);
 });
+
