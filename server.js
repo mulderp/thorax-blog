@@ -17,7 +17,17 @@ app.get('/api/posts', function(req, res) {
   res.send(200, 
    [ {"id": 1, "title": "A Winter Day", "body": "On a cold winter day, ... " }]
    )
-})
+});
+
+app.get('/main.js', function(req, res) {
+ console.log("--> /");
+ res.sendfile(__dirname + '/dist/main.js');
+});
+
+app.get('/screen.css', function(req, res) {
+ console.log("--> /");
+ res.sendfile(__dirname + '/dist/screen.css');
+});
 
 app.get('/', function(req, res) {
  console.log("--> /");
