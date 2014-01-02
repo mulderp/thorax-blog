@@ -1,8 +1,11 @@
 define([
   'backbone',
   'mocks',
-  'collections/posts'
-], function (Backbone, Mock, PostsCollection) {
+  'collections/posts',
+  'views/root',
+  'views/posts/index',
+  'views/posts/show'
+], function (Backbone, Mock, PostsCollection, RootView, IndexView, ShowPost) {
   var collection;
 
   if (!collection) {
@@ -13,12 +16,23 @@ define([
 
   return Backbone.Router.extend({
     routes: {
-      "posts/:slug": "showPost",
+      "posts/:id": "showPost",
       "": "index"
     },
     index: function() {
+      var view;
+      collection.fetch({success: function(result) {
+        view = new IndexView({collection: collection});
+        console.log(collection.size());
+        RootView.getInstance().setView(view);
+      }});
     },
-    showPost: function() {
+    showPost: function(id) {
+      var post = collection.get(id);
+      console.log(post);
+
+      var view = new ShowPost({model: post});
+      RootView.getInstance().setView(view);
     }
   });
 });

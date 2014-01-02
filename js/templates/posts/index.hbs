@@ -1,0 +1,6 @@
+<h2>The latests Posts</h2>
+{{#collection}}
+  {{#link "posts/{{id}}" expand-tokens=true}}
+    {{ title }}
+{{/link}}
+{{/collection}}
